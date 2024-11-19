@@ -28,7 +28,7 @@ class LLM(torch.nn.Module):
 
         print('Loading LLAMA')
         kwargs = {
-            "max_memory": {i: f'{size}GiB' for i, size in enumerate(args.max_memory)},
+            "max_memory": {0: "40GiB"},
             "device_map": "auto",
             "revision": "main",
         }
