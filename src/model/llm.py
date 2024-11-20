@@ -67,6 +67,8 @@ class LLM(torch.nn.Module):
                 task_type="CAUSAL_LM",
             )
             model = get_peft_model(model, config)
+            # Reduces memory usage by recomputing certain gradients during backprop
+            model.gradient_checkpointing_enable()
 
         self.model = model
         print('Finish loading LLAMA!')
